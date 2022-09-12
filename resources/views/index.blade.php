@@ -14,7 +14,7 @@
     position: relative;
   }
   .main {
-    width: 50vw;
+    width: 50%;
     padding: 30px;
     background-color: white;
     position: absolute;
@@ -32,14 +32,13 @@
   }
   .header_list {
     display: flex;
-    justify-content: flex-start;
   }
   h1 {
     font-size: 24px;
-    margin: 5px 300px 0 0;
+    margin: 5px 150px 0 0;
   }
-  p {
-    margin: 7px 15px 0 0;
+  .header_list p {
+    margin: 10px 15px 0 150px;
   }
   .logout {
     padding: 5px 10px;
@@ -47,16 +46,13 @@
     border-radius: 5px;
     color: red;
     background-color: white;
+    cursor: pointer;
+    transition: .2s cubic-bezier(0.45, 0, 0.55, 1);
   }
-  .logout:active {
+  .logout.reverse:hover {
     color: white;
     background-color: red;
   }
-  /* .logout:hover {
-    color: white;
-    background-color: red;
-    transition: all 0.01s;
-  } */
   </style>
 </head>
   <body>
@@ -70,9 +66,9 @@
           @endif 
           @if(count($errors) > 0)
           <ul>
-          @foreach($errors->all() as $error)
-          <li>{{$error}}</li>
-          @endforeach
+            @foreach($errors->all() as $error)
+            <li>{{$error}}</li>
+            @endforeach
           </ul>
           @endif
           <form action="/" method="get">
