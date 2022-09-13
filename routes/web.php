@@ -29,7 +29,7 @@ Route::get('/home', [TodoController::class, 'index']);
 
 Route::post('/add', [TodoController::class, 'create']);
 
-Route::post('/edit', [TodoController::class, 'update']);
+Route::post('/edit', [TodoController::class, 'update'])->name('edit');
 
 Route::post('/delete', [TodoController::class, 'remove']);
 

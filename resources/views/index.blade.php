@@ -98,17 +98,34 @@
     margin-top: 20px;
     font-size: 18px;
   }
-  .list1, .list2 {
-    width: 35%;
+  .list1 {
+    width: 30%;
+    text-align: center;
+  }
+  .list2 {
+    width: 40%;
     text-align: center;
   }
   .list3, .list4, .list5 {
     width: 10%;
     text-align: center;
   }
-  .text1, .text2 {
-    width: 35%;
+  .text1 {
+    width: 30%;
     text-align: center;
+    font-size: 16px;
+  }
+  .text2 {
+    width: 40%;
+    text-align: center;
+    font-size: 16px;
+  }
+  .task_text2 {
+    width: 80%;
+    padding: 8px 10px;
+    margin-top: 5px;
+    border: 1px solid #A9A9A9;
+    border-radius: 5px;
   }
   .text3, .text4, .text5 {
     width: 10%;
@@ -118,7 +135,7 @@
     padding: 8px 18px;
     border: 2px solid #FF8C00;
     border-radius: 5px;
-    color: #FF00FF;
+    color: #FF8C00;
     background-color: white;
     margin-left: 25px;
   }
@@ -130,7 +147,7 @@
     padding: 8px 18px;
     border: 2px solid #00FFFF;
     border-radius: 5px;
-    color: #FF00FF;
+    color: #00FFFF;
     background-color: white;
     margin-left: 25px;
   }
@@ -194,13 +211,13 @@
           <th class="list4">更新</th>
           <th class="list5">削除</th>
         </tr>
-        @foreach($todos as $todo)
+        @foreach($auth as $param)
         <tr>
           <td class="text1">{{$auth->updated_at}}</td>
-          <form action="{{route('edit', ['id' => $todo->id])}}" method="post">
+          <form action="{{route('edit', ['id' => $auth->id])}}" method="post">
             @csrf
             <td class="text2">
-              <input type="text" name="task" value="{{$todo->task}}">
+              <input type="text" name="task" value="{{$auth->task}}" class="task_text2">
             </td>
           </form>
           <form action="detail.html" method="get">
@@ -228,6 +245,7 @@
             </td>
           </form>  
         </tr>
+        @endforeach
       </table>
     </div>
   </div>
