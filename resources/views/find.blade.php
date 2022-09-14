@@ -51,18 +51,6 @@
     color: white;
     background-color: red;
   }
-  .task_btn {
-    padding: 8px 10px;
-    margin-top: 10px;
-    border: 2px solid #FFD700;
-    border-radius: 5px;
-    color: #FFD700;
-    background-color: white;
-  }
-  .task_btn:hover {
-    color: white;
-    background-color: #FFD700;
-  }
   .content {
     width: 100%;
     display: flex;
@@ -155,15 +143,29 @@
     color: white;
     background-color: #00FFFF;
   }
+  .back_btn {
+    padding: 8px 18px;
+    border: 2px solid #778899;
+    border-radius: 5px;
+    color: #778899;
+    background-color: white;
+    margin-left: 25px;
+  }
+  .back_btn:hover {
+    color: white;
+    background-color: #778899;
+  }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="main">
       <div class="header">
-        <h1>Todo List</h1>
+        <h1>タスク検索</h1>
         <div class="header_list">
-          
+          @if(Auth::check())
+          <p>「{{ $auth->name }}」 でログイン中</p>
+          @endif 
           @if(count($errors) > 0)
           <ul>
             @foreach($errors->all() as $error)
@@ -177,14 +179,10 @@
           </form>
         </div>
       </div>
-      <form action="/find" method="get">
-        @csrf
-        <input type="submit" value="タスク検索" class="task_btn">
-      </form>
       <div class="content" style="display:inline-flex">
         <form action="/add" method="post">
           @csrf
-          <input type="text" name="task" value="{{$todos->task}}" class="task_text">
+          <input type="text" name="task" class="task_text">
         </form>
         <form action="detail.html" method="post">
           @csrf
@@ -245,6 +243,10 @@
         </tr>
         @endforeach
       </table>
+      <form action="/" method="get">
+        @csrf
+        <input type="submit" value="戻る" class="back_btn">
+      </form>
     </div>
   </div>
 </body>
