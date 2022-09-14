@@ -20,7 +20,8 @@ class TodoController extends Controller
       $todos = Todo::all();
       $param = [
         'auth' => $auth,
-        'user' => $users
+        'user' => $users,
+        'todos' => $todos
       ];
       return view('index', $param);
     }

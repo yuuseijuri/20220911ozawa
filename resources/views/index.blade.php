@@ -213,7 +213,7 @@
         </tr>
         @foreach($todos as $todo)
         <tr>
-          <td class="text1">{{$auth->updated_at}}</td>
+          <td class="text1">{{$todo->updated_at}}</td>
           <form action="{{route('edit', ['id' => $todo->id])}}" method="post">
             @csrf
             <td class="text2">
