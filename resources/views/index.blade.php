@@ -214,10 +214,10 @@
         @foreach($todos as $todo)
         <tr>
           <td class="text1">{{$auth->updated_at}}</td>
-          <form action="{{route('edit', ['id' => $auth->id])}}" method="post">
+          <form action="{{route('edit', ['id' => $todo->id])}}" method="post">
             @csrf
             <td class="text2">
-              <input type="text" name="task" value="{{$auth->task}}" class="task_text2">
+              <input type="text" name="task" value="{{$todo->task}}" class="task_text2">
             </td>
           </form>
           <form action="detail.html" method="get">

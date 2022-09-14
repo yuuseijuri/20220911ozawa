@@ -8,6 +8,7 @@ use App\Http\Requests\AuthRequest;
 use App\Http\Requests\ClientRequest;
 use App\Http\Requests\TodoRequest;
 use App\Models\User;
+use App\Models\Todo;
 use App\Models\Tag;
 use App\Http\Controllers\TaskController;
 
@@ -16,6 +17,7 @@ class TodoController extends Controller
     public function index() {
       $auth = Auth::user();
       $users = User::all();
+      $todos = Todo::all();
       $param = [
         'auth' => $auth,
         'user' => $users
