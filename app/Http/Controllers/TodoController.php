@@ -9,6 +9,7 @@ use App\Http\Requests\ClientRequest;
 use App\Http\Requests\TodoRequest;
 use App\Models\User;
 use App\Models\Tag;
+use App\Http\Controllers\TaskController;
 
 class TodoController extends Controller
 {

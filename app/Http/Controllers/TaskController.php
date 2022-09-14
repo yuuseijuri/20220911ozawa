@@ -7,6 +7,7 @@ use App\Http\Requests\AuthRequest;
 use App\Http\Requests\ClientRequest;
 use App\Http\Requests\TodoRequest;
 use App\Models\Todo;
+use App\Http\Controllers\TodoController;
 
 class TaskController extends Controller
 {

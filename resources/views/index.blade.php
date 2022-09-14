@@ -186,7 +186,7 @@
       <div class="content" style="display:inline-flex">
         <form action="/add" method="post">
           @csrf
-          <input type="text" name="task" value="{{$auth->task}}" class="task_text">
+          <input type="text" name="task" class="task_text">
         </form>
         <form action="detail.html" method="post">
           @csrf
@@ -211,7 +211,7 @@
           <th class="list4">更新</th>
           <th class="list5">削除</th>
         </tr>
-        @foreach($auth as $param)
+        @foreach($todos as $todo)
         <tr>
           <td class="text1">{{$auth->updated_at}}</td>
           <form action="{{route('edit', ['id' => $auth->id])}}" method="post">
