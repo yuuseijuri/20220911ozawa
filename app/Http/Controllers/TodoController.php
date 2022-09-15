@@ -27,7 +27,7 @@ class TodoController extends Controller
     }
     public function create(TodoRequest $request) {
       $form = $request->all();
-      User::create($form);
+      Todo::create($form);
       return redirect('/home');
     }
     public function update(TodoRequest $request) {
