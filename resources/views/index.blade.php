@@ -187,20 +187,16 @@
         <form action="/add" method="post" style="display:inline-flex">
           @csrf
           <input type="text" name="task" class="task_text">
-          <form action="detail.html" method="post">
-            @csrf
-            <select name="select" class="tag_list">
-              <option value="家事">家事</option>
-              <option value="勉強">勉強</option>
-              <option value="運動">運動</option>
-              <option value="食事">食事</option>
-              <option value="移動">移動</option>
-            </select>  
-          </form>
-          <form action="/edit" method="post">
-            @csrf
-            <input type="submit" value="追加" class="create_btn">
-          </form>
+          @csrf
+          <select name="tag_id" class="tag_list">
+            <option value="家事">家事</option>
+            <option value="勉強">勉強</option>
+            <option value="運動">運動</option>
+            <option value="食事">食事</option>
+            <option value="移動">移動</option>
+          </select>  
+          @csrf
+          <input type="submit" value="追加" class="create_btn">
         </form>  
       </div>
       <table class="title_list">
