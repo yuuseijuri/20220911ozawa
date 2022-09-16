@@ -17,7 +17,7 @@ class CreateTodosTable extends Migration
             $table->id();
             $table->string('task', 20);
             $table->integer('user_id');
-            $table->integer('tag_id');
+            $table->string('tag_id');
             $table->timestamps();
         });
     }
