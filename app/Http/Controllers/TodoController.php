@@ -43,8 +43,16 @@ class TodoController extends Controller
       User::where('id', $request->id)->update($form);
       return redirect('/');
     }
-    public function remove(Request $request) {
-      User::find($request->id)->delete();
-      return redirect('/');
+    public function remove(TodoRequest $request) {
+      $id = User::id();
+      $email = $request->email;
+      $password = $request->password;
+      $form = [
+        'id' => $id,
+        'email' => $email,
+        'password' => $password
+      ];
+      User::find($form)->delete();
+      return redirect('/home');
     }
 }

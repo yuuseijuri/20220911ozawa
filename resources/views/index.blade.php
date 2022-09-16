@@ -189,11 +189,11 @@
           <input type="text" name="task" class="task_text">
           @csrf
           <select name="tag_id" class="tag_list">
-            <option value="家事">家事</option>
-            <option value="勉強">勉強</option>
-            <option value="運動">運動</option>
-            <option value="食事">食事</option>
-            <option value="移動">移動</option>
+            <option value="$tag_id">家事</option>
+            <option value="$tag_id">勉強</option>
+            <option value="$tag_id">運動</option>
+            <option value="$tag_id">食事</option>
+            <option value="$tag_id">移動</option>
           </select>  
           @csrf
           <input type="submit" value="追加" class="create_btn">
@@ -219,7 +219,7 @@
           <form action="detail.html" method="get">
             @csrf
             <td class="text3">
-              <select name="select" class="tag_list">
+              <select name="tag_id" class="tag_list">
                 <option value="家事">家事</option>
                 <option value="勉強">勉強</option>
                 <option value="運動">運動</option>
