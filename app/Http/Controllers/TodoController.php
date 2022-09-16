@@ -26,7 +26,14 @@ class TodoController extends Controller
       return view('index', $param);
     }
     public function create(TodoRequest $request) {
-      $form = $request->all();
+      $user_id = Auth::id();
+      $task = $request->task;
+      $tag_id = $request->tag_id;
+      $form = [
+        'user_id' => $user_id,
+        'task' => $task,
+        'tag_id' => $tag_id
+      ];
       Todo::create($form);
       return redirect('/home');
     }
