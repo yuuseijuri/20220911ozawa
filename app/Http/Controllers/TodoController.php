@@ -36,7 +36,7 @@ class TodoController extends Controller
         'tag_id' => $tag_id,
         'tag' => $tags
       ];
-      dd($form);
+      // dd($form);
       Todo::create($form);
       return redirect('/home');
     }

@@ -189,11 +189,11 @@
           <input type="text" name="task" class="task_text">
           @csrf
           <select name="tag_id" class="tag_list">
-            <option value="1" @if(old('tag_id') === '1') selected @endif>家事</option>
-            <option value="2" @if(old('tag_id') === '2') selected @endif>勉強</option>
-            <option value="3" @if(old('tag_id') === '3') selected @endif>運動</option>
-            <option value="4" @if(old('tag_id') === '4') selected @endif>食事</option>
-            <option value="5" @if(old('tag_id') === '5') selected @endif>移動</option>
+            <option value="1" @if( old('tag_id') === '1' ) selected @endif>家事</option>
+            <option value="2" @if( old('tag_id') === '2' ) selected @endif>勉強</option>
+            <option value="3" @if( old('tag_id') === '3' ) selected @endif>運動</option>
+            <option value="4" @if( old('tag_id') === '4' ) selected @endif>食事</option>
+            <option value="5" @if( old('tag_id') === '5' ) selected @endif>移動</option>
           </select> 
           @csrf
           <input type="submit" value="追加" class="create_btn">
@@ -220,12 +220,12 @@
             @csrf
             <td class="text3">
               <select name="tag_id" class="tag_list">
-                <option value="家事">家事</option>
-                <option value="勉強">勉強</option>
-                <option value="運動">運動</option>
-                <option value="食事">食事</option>
-                <option value="移動">移動</option>
-              </select> 
+              <option value="1" @if( old('tag_id') === '1' ) selected @endif>家事</option>
+              <option value="2" @if( old('tag_id') === '2' ) selected @endif>勉強</option>
+              <option value="3" @if( old('tag_id') === '3' ) selected @endif>運動</option>
+              <option value="4" @if( old('tag_id') === '4' ) selected @endif>食事</option>
+              <option value="5" @if( old('tag_id') === '5' ) selected @endif>移動</option>
+              </select>   
             </td> 
           </form>
           <form action="/edit" method="post">
