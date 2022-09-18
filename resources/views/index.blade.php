@@ -10,7 +10,7 @@
   .container {
     width: 100vw;
     height: 100vh;
-    background-color: #0000CD;
+    background-color: #000080;
     position: relative;
   }
   .main {
@@ -189,12 +189,12 @@
           <input type="text" name="task" class="task_text">
           @csrf
           <select name="tag_id" class="tag_list">
-            <option value="$tag_id">家事</option>
-            <option value="$tag_id">勉強</option>
-            <option value="$tag_id">運動</option>
-            <option value="$tag_id">食事</option>
-            <option value="$tag_id">移動</option>
-          </select>  
+            <option value="1" @if(old('tag_id') === '1') selected @endif>家事</option>
+            <option value="2" @if(old('tag_id') === '2') selected @endif>勉強</option>
+            <option value="3" @if(old('tag_id') === '3') selected @endif>運動</option>
+            <option value="4" @if(old('tag_id') === '4') selected @endif>食事</option>
+            <option value="5" @if(old('tag_id') === '5') selected @endif>移動</option>
+          </select> 
           @csrf
           <input type="submit" value="追加" class="create_btn">
         </form>  

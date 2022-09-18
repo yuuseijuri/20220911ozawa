@@ -29,11 +29,14 @@ class TodoController extends Controller
       $user_id = Auth::id();
       $task = $request->task;
       $tag_id = $request->tag_id;
+      $tags = Tag::all();
       $form = [
         'user_id' => $user_id,
         'task' => $task,
-        'tag_id' => $tag_id
+        'tag_id' => $tag_id,
+        'tag' => $tags
       ];
+      dd($form);
       Todo::create($form);
       return redirect('/home');
     }
@@ -44,15 +47,8 @@ class TodoController extends Controller
       return redirect('/');
     }
     public function remove(TodoRequest $request) {
-      $id = User::id();
-      $email = $request->email;
-      $password = $request->password;
-      $form = [
-        'id' => $id,
-        'email' => $email,
-        'password' => $password
-      ];
-      User::find($form)->delete();
+      
+      User::find($request->id)->delete();
       return redirect('/home');
     }
 }
