@@ -189,12 +189,38 @@
           <input type="text" name="task" class="task_text">
           @csrf
           <select name="tag_id" class="tag_list">
-            <option value="1" @if( old('tag_id') === '1' ) selected @endif>家事</option>
-            <option value="2" @if( old('tag_id') === '2' ) selected @endif>勉強</option>
-            <option value="3" @if( old('tag_id') === '3' ) selected @endif>運動</option>
-            <option value="4" @if( old('tag_id') === '4' ) selected @endif>食事</option>
-            <option value="5" @if( old('tag_id') === '5' ) selected @endif>移動</option>
-          </select> 
+            @if($todos->tag_id === 1)
+            <option value="1" selected>家事</option>
+            <option value="2">勉強</option>
+            <option value="3">運動</option>
+            <option value="4">食事</option>
+            <option value="5">移動</option>
+            @elseif($todos->tag_id === 2)
+            <option value="1">家事</option>
+            <option value="2" selected>勉強</option>
+            <option value="3">運動</option>
+            <option value="4">食事</option>
+            <option value="5">移動</option>
+            @elseif($todos->tag_id === 3)
+            <option value="1">家事</option>
+            <option value="2">勉強</option>
+            <option value="3" selected>運動</option>
+            <option value="4">食事</option>
+            <option value="5">移動</option>
+            @elseif($todos->tag_id === 4)
+            <option value="1">家事</option>
+            <option value="2">勉強</option>
+            <option value="3">運動</option>
+            <option value="4" selected>食事</option>
+            <option value="5">移動</option>
+            @elseif($todos->tag_id === 5)
+            <option value="1">家事</option>
+            <option value="2">勉強</option>
+            <option value="3">運動</option>
+            <option value="4">食事</option>
+            <option value="5" selected>移動</option>
+            @endif
+          </select>   
           @csrf
           <input type="submit" value="追加" class="create_btn">
         </form>  
@@ -220,11 +246,37 @@
             @csrf
             <td class="text3">
               <select name="tag_id" class="tag_list">
-              <option value="1" @if( old('tag_id') === '1' ) selected @endif>家事</option>
-              <option value="2" @if( old('tag_id') === '2' ) selected @endif>勉強</option>
-              <option value="3" @if( old('tag_id') === '3' ) selected @endif>運動</option>
-              <option value="4" @if( old('tag_id') === '4' ) selected @endif>食事</option>
-              <option value="5" @if( old('tag_id') === '5' ) selected @endif>移動</option>
+                @if($todo->tag_id === 1)
+                <option value="1" selected>家事</option>
+                <option value="2">勉強</option>
+                <option value="3">運動</option>
+                <option value="4">食事</option>
+                <option value="5">移動</option>
+                @elseif($todo->tag_id === 2)
+                <option value="1">家事</option>
+                <option value="2" selected>勉強</option>
+                <option value="3">運動</option>
+                <option value="4">食事</option>
+                <option value="5">移動</option>
+                @elseif($todo->tag_id === 3)
+                <option value="1">家事</option>
+                <option value="2">勉強</option>
+                <option value="3" selected>運動</option>
+                <option value="4">食事</option>
+                <option value="5">移動</option>
+                @elseif($todo->tag_id === 4)
+                <option value="1">家事</option>
+                <option value="2">勉強</option>
+                <option value="3">運動</option>
+                <option value="4" selected>食事</option>
+                <option value="5">移動</option>
+                @elseif($todo->tag_id === 5)
+                <option value="1">家事</option>
+                <option value="2">勉強</option>
+                <option value="3">運動</option>
+                <option value="4">食事</option>
+                <option value="5" selected>移動</option>
+                @endif
               </select>   
             </td> 
           </form>

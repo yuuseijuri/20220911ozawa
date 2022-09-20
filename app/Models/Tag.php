@@ -13,4 +13,7 @@ class Tag extends Model
     protected $fillable = [
         'tag'
     ];
+    public function todos() {
+        return $this->hasMany('App\Models\Todo');
+    }
 }
