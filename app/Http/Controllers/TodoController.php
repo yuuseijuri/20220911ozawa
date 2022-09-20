@@ -18,23 +18,31 @@ class TodoController extends Controller
       $auth = Auth::user();
       $users = User::all();
       $todos = Todo::all();
+      $tags = Tag::all();
+      $hastags = Todo::has('tag')->get();
+      $notags = Todo::doesntHave('tag')->get();
       $param = [
         'auth' => $auth,
         'user' => $users,
-        'todos' => $todos
+        'todos' => $todos,
+        'tag' => $tags,
+        'hastags' => $hastags,
+        'notags' => $notags
       ];
       return view('index', $param);
     }
     public function create(TodoRequest $request) {
       $user_id = Auth::id();
+      $todos = Todo::all();
+      $tags = Tag::all();
       $task = $request->task;
       $tag_id = $request->tag_id;
-      $tags = Tag::all();
       $form = [
         'user_id' => $user_id,
+        'todos' => $todos,
+        'tag' => $tags,
         'task' => $task,
         'tag_id' => $tag_id,
-        'tag' => $tags
       ];
       // dd($form);
       Todo::create($form);

@@ -16,4 +16,7 @@ class Todo extends Model
         'tag_id',
         'user_id'
     ];
+    public function tags() {
+        return $this->belongsTo('App\Models\Tag');
+    }
 }

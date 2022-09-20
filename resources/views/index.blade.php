@@ -189,31 +189,31 @@
           <input type="text" name="task" class="task_text">
           @csrf
           <select name="tag_id" class="tag_list">
-            @if($todos->tag_id === 1)
+            @if($tag->id === 1)
             <option value="1" selected>家事</option>
             <option value="2">勉強</option>
             <option value="3">運動</option>
             <option value="4">食事</option>
             <option value="5">移動</option>
-            @elseif($todos->tag_id === 2)
+            @elseif($tag->get('id') === 2)
             <option value="1">家事</option>
             <option value="2" selected>勉強</option>
             <option value="3">運動</option>
             <option value="4">食事</option>
             <option value="5">移動</option>
-            @elseif($todos->tag_id === 3)
+            @elseif($tag->get('id') === 3)
             <option value="1">家事</option>
             <option value="2">勉強</option>
             <option value="3" selected>運動</option>
             <option value="4">食事</option>
             <option value="5">移動</option>
-            @elseif($todos->tag_id === 4)
+            @elseif($tag->get('id') === 4)
             <option value="1">家事</option>
             <option value="2">勉強</option>
             <option value="3">運動</option>
             <option value="4" selected>食事</option>
             <option value="5">移動</option>
-            @elseif($todos->tag_id === 5)
+            @elseif($tag->get('id') === 5)
             <option value="1">家事</option>
             <option value="2">勉強</option>
             <option value="3">運動</option>
