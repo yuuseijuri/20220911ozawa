@@ -19,15 +19,11 @@ class TodoController extends Controller
       $users = User::all();
       $todos = Todo::all();
       $tags = Tag::all();
-      $hastags = Todo::has('tag')->get();
-      $notags = Todo::doesntHave('tag')->get();
       $param = [
         'auth' => $auth,
         'user' => $users,
         'todos' => $todos,
-        'tag' => $tags,
-        'hastags' => $hastags,
-        'notags' => $notags
+        'tag' => $tags
       ];
       return view('index', $param);
     }

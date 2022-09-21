@@ -189,7 +189,7 @@
           <input type="text" name="task" class="task_text">
           @csrf
           <select name="tag_id" class="tag_list">
-            @if($tag->id === 1)
+            @if($todos->tag_id === 1)
             <option value="1" selected>家事</option>
             <option value="2">勉強</option>
             <option value="3">運動</option>
