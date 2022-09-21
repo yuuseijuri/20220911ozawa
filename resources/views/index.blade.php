@@ -189,37 +189,9 @@
           <input type="text" name="task" class="task_text">
           @csrf
           <select name="tag_id" class="tag_list">
-            @if($todos->tag_id === 1)
-            <option value="1" selected>家事</option>
-            <option value="2">勉強</option>
-            <option value="3">運動</option>
-            <option value="4">食事</option>
-            <option value="5">移動</option>
-            @elseif($tag->get('id') === 2)
-            <option value="1">家事</option>
-            <option value="2" selected>勉強</option>
-            <option value="3">運動</option>
-            <option value="4">食事</option>
-            <option value="5">移動</option>
-            @elseif($tag->get('id') === 3)
-            <option value="1">家事</option>
-            <option value="2">勉強</option>
-            <option value="3" selected>運動</option>
-            <option value="4">食事</option>
-            <option value="5">移動</option>
-            @elseif($tag->get('id') === 4)
-            <option value="1">家事</option>
-            <option value="2">勉強</option>
-            <option value="3">運動</option>
-            <option value="4" selected>食事</option>
-            <option value="5">移動</option>
-            @elseif($tag->get('id') === 5)
-            <option value="1">家事</option>
-            <option value="2">勉強</option>
-            <option value="3">運動</option>
-            <option value="4">食事</option>
-            <option value="5" selected>移動</option>
-            @endif
+            @foreach($tag as $tagg)
+              <option value="{{$tagg->id}}">{{$tagg->tag}}</option>
+            @endforeach
           </select>   
           @csrf
           <input type="submit" value="追加" class="create_btn">
@@ -246,37 +218,9 @@
             @csrf
             <td class="text3">
               <select name="tag_id" class="tag_list">
-                @if($todo->tag_id === 1)
-                <option value="1" selected>家事</option>
-                <option value="2">勉強</option>
-                <option value="3">運動</option>
-                <option value="4">食事</option>
-                <option value="5">移動</option>
-                @elseif($todo->tag_id === 2)
-                <option value="1">家事</option>
-                <option value="2" selected>勉強</option>
-                <option value="3">運動</option>
-                <option value="4">食事</option>
-                <option value="5">移動</option>
-                @elseif($todo->tag_id === 3)
-                <option value="1">家事</option>
-                <option value="2">勉強</option>
-                <option value="3" selected>運動</option>
-                <option value="4">食事</option>
-                <option value="5">移動</option>
-                @elseif($todo->tag_id === 4)
-                <option value="1">家事</option>
-                <option value="2">勉強</option>
-                <option value="3">運動</option>
-                <option value="4" selected>食事</option>
-                <option value="5">移動</option>
-                @elseif($todo->tag_id === 5)
-                <option value="1">家事</option>
-                <option value="2">勉強</option>
-                <option value="3">運動</option>
-                <option value="4">食事</option>
-                <option value="5" selected>移動</option>
-                @endif
+                @foreach($tag as $tagg)
+                  <option value="{{$tagg->id}}">{{$tagg->tag}}</option>
+                @endforeach
               </select>   
             </td> 
           </form>
