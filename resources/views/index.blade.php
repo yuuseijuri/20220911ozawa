@@ -213,17 +213,15 @@
             <td class="text2">
               <input type="text" name="task" value="{{$todo->task}}" class="task_text2">
             </td>
-          </form>
-          <form action="detail.html" method="get">
             @csrf
             <td class="text3">
               <select name="tag_id" class="tag_list">
                 @foreach($tags as $tag)
-                  <option value="{{$tag->id}}" @if($tag->id==$thisTag) selected @endif>{{$tag->tag}}</option>
+                  <option value="{{$tag->id}}" @if($tag->id==$todo->tag_id) selected @endif>{{$tag->tag}}</option>
                 @endforeach
               </select>   
             </td> 
-          </form>
+          
           <form action="/edit" method="post">
             @csrf
             <td class="text4">
