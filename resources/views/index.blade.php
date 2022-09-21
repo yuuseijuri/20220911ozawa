@@ -189,8 +189,8 @@
           <input type="text" name="task" class="task_text">
           @csrf
           <select name="tag_id" class="tag_list">
-            @foreach($tag as $tagg)
-              <option value="{{$tagg->id}}">{{$tagg->tag}}</option>
+            @foreach($tags as $tag)
+              <option value="{{$tag->id}}">{{$tag->tag}}</option>
             @endforeach
           </select>   
           @csrf
@@ -218,8 +218,8 @@
             @csrf
             <td class="text3">
               <select name="tag_id" class="tag_list">
-                @foreach($tag as $tagg)
-                  <option value="{{$tagg->id}}">{{$tagg->tag}}</option>
+                @foreach($tags as $tag)
+                  <option value="{{$tag->id}}" @if($tag->id==$thisTag) selected @endif>{{$tag->tag}}</option>
                 @endforeach
               </select>   
             </td> 

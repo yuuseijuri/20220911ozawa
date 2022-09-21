@@ -23,7 +23,7 @@ class TodoController extends Controller
         'auth' => $auth,
         'user' => $users,
         'todos' => $todos,
-        'tag' => $tags
+        'tags' => $tags
       ];
       return view('index', $param);
     }
@@ -36,7 +36,7 @@ class TodoController extends Controller
       $form = [
         'user_id' => $user_id,
         'todos' => $todos,
-        'tag' => $tags,
+        'tags' => $tags,
         'task' => $task,
         'tag_id' => $tag_id,
       ];
