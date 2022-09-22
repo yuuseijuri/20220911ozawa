@@ -173,7 +173,7 @@
             @endforeach
           </ul>
           @endif
-          <form action="/" method="get">
+          <form action="{{route('login'), 'id'}}" method="get">
             @csrf
             <input type="submit" value="ログアウト" class="logout_btn">
           </form>

@@ -14,6 +14,9 @@ use App\Http\Controllers\TaskController;
 
 class TodoController extends Controller
 {
+    public function redirectPath() {
+      return '/login';
+    }
     public function index() {
       $auth = Auth::user();
       $users = User::all();
@@ -52,16 +55,8 @@ class TodoController extends Controller
       Todo::where('id', $request->id)->update($form);
       return redirect('/home');
     }
-    public function remove(TodoRequest $request) {
-      $user_id = Auth::id();
-      $task = $request->task;
-      $tag_id = $request->tag_id;
-      $form = [
-        'user_id' => $user_id,
-        'task' => $task,
-        'tag_id' => $tag_id,
-      ];
-      Todo::find($request->id)->delete($form);
+    public function remove(Request $request) {
+      Todo::find($request->id)->delete();
       return redirect('/home');
     }
 }

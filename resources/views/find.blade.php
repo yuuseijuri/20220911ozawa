@@ -69,7 +69,7 @@
     border-radius: 5px;
     margin-left: 25px;
   }
-  .create_btn {
+  .search_btn {
     padding: 8px 18px;
     border: 2px solid #FF00FF;
     border-radius: 5px;
@@ -77,7 +77,7 @@
     background-color: white;
     margin-left: 25px;
   }
-  .create_btn:hover {
+  .search_btn:hover {
     color: white;
     background-color: #FF00FF;
   }
@@ -179,24 +179,18 @@
           </form>
         </div>
       </div>
-      <div class="content" style="display:inline-flex">
-        <form action="/add" method="post">
+      <div class="content">
+        <form action="/find" method="post" style="display:inline-flex">
           @csrf
           <input type="text" name="task" class="task_text">
-        </form>
-        <form action="detail.html" method="post">
           @csrf
-          <select name="select" class="tag_list">
-            <option value="家事">家事</option>
-            <option value="勉強">勉強</option>
-            <option value="運動">運動</option>
-            <option value="食事">食事</option>
-            <option value="移動">移動</option>
-          </select>  
-        </form>
-        <form action="/edit" method="post">
+          <select name="tag_id" class="tag_list">
+            @foreach($tags as $tag)
+            <option value="{{$tag->id}}">{{$tag->tag}}</option>
+            @endforeach
+          </select>
           @csrf
-          <input type="submit" value="追加" class="create_btn">
+          <input type="submit" value="検索" class="search_btn">
         </form>  
       </div>
       <table class="title_list">
@@ -210,25 +204,19 @@
         @foreach($todos as $todo)
         <tr>
           <td class="text1">{{$auth->updated_at}}</td>
-          <form action="{{route('edit', ['id' => $auth->id])}}" method="post">
+          <form action="{{route('edit', ['id' => $todo->id])}}" method="post">
             @csrf
             <td class="text2">
-              <input type="text" name="task" value="{{$auth->task}}" class="task_text2">
+              <input type="text" name="task" value="{{$todo->task}}" class="task_text2">
             </td>
-          </form>
-          <form action="detail.html" method="get">
             @csrf
             <td class="text3">
               <select name="select" class="tag_list">
-                <option value="家事">家事</option>
-                <option value="勉強">勉強</option>
-                <option value="運動">運動</option>
-                <option value="食事">食事</option>
-                <option value="移動">移動</option>
+                @foreach($tags as $tag)
+                  <option value="{{$tag->id}}" @if($tag->id==$todo->tag_id) selected @endif>{{$tag->tag}}</option>
+                @endforeach  
               </select> 
-            </td> 
-          </form>
-          <form action="/edit" method="post">
+            </td>
             @csrf
             <td class="text4">
               <input type="submit" value="更新" class="update_btn">
@@ -243,7 +231,7 @@
         </tr>
         @endforeach
       </table>
-      <form action="/" method="get">
+      <form action="{{route('home', ['id' => $todo->id])}}" method="get">
         @csrf
         <input type="submit" value="戻る" class="back_btn">
       </form>

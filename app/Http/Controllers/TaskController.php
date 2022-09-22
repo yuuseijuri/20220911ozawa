@@ -18,10 +18,12 @@ class TaskController extends Controller
         $auth = Auth::user();
         $users = User::all();
         $todos = Todo::all();
+        $tags = Tag::all();
         $param = [
             'auth' => $auth,
             'user' => $users,
-            'todos' => $todos
+            'todos' => $todos,
+            'tags' => $tags
         ];
         return view('find', $param, ['input' => '']);
     }
@@ -33,5 +35,30 @@ class TaskController extends Controller
             'input' => $request->input
         ];
         return view('find', $param);
+    }
+    public function update(TodoRequest $request) {
+        $user_id = Auth::id();
+        $task = $request->task;
+        $tag_id = $request->tag_id;
+        $form = [
+            'user_id' => $user_id,
+            'task' => $task,
+            'tag_id' => $tag_id,
+        ];
+        unset($form['_token']);
+        Todo::where('id', $request->id)->update($form);
+        return redirect('/find');
+    }
+    public function remove(TodoRequest $request) {
+        $user_id = Auth::id();
+        $task = $request->task;
+        $tag_id = $request->tag_id;
+        $form = [
+            'user_id' => $user_id,
+            'task' => $task,
+            'tag_id' => $tag_id,
+        ];
+        Todo::find($request->id)->delete($form);
+        return redirect('/find');
     }
 }
