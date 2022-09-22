@@ -31,7 +31,7 @@ Route::post('/add', [TodoController::class, 'create']);
 
 Route::post('/edit', [TodoController::class, 'update'])->name('edit');
 
-Route::post('/delete', [TodoController::class, 'remove']);
+Route::post('/delete', [TodoController::class, 'remove'])->name('delete');
 
 Route::get('/find', [TaskController::class, 'find']);
 Route::post('/find', [TaskController::class, 'search']);

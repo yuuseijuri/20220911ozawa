@@ -221,14 +221,12 @@
                 @endforeach
               </select>   
             </td> 
-          
-          <form action="/edit" method="post">
             @csrf
             <td class="text4">
               <input type="submit" value="更新" class="update_btn">
             </td>
           </form>  
-          <form action="/delete" method="post">
+          <form action="{{route('delete', ['id' => $todo->id])}}" method="post">
             @csrf
             <td class="text5">
               <input type="submit" value="削除" class="remove_btn">

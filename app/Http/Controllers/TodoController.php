@@ -29,14 +29,10 @@ class TodoController extends Controller
     }
     public function create(TodoRequest $request) {
       $user_id = Auth::id();
-      $todos = Todo::all();
-      $tags = Tag::all();
       $task = $request->task;
       $tag_id = $request->tag_id;
       $form = [
         'user_id' => $user_id,
-        'todos' => $todos,
-        'tags' => $tags,
         'task' => $task,
         'tag_id' => $tag_id,
       ];
@@ -45,24 +41,27 @@ class TodoController extends Controller
     }
     public function update(TodoRequest $request) {
       $user_id = Auth::id();
-      $todos = Todo::all();
-      $tags = Tag::all();
       $task = $request->task;
       $tag_id = $request->tag_id;
       $form = [
         'user_id' => $user_id,
-        'todos' => $todos,
-        'tags' => $tags,
         'task' => $task,
         'tag_id' => $tag_id,
       ];
       unset($form['_token']);
-      User::where('id', $request->id)->update($form);
-      return redirect('/');
+      Todo::where('id', $request->id)->update($form);
+      return redirect('/home');
     }
     public function remove(TodoRequest $request) {
-      
-      User::find($request->id)->delete();
+      $user_id = Auth::id();
+      $task = $request->task;
+      $tag_id = $request->tag_id;
+      $form = [
+        'user_id' => $user_id,
+        'task' => $task,
+        'tag_id' => $tag_id,
+      ];
+      Todo::find($request->id)->delete($form);
       return redirect('/home');
     }
 }
