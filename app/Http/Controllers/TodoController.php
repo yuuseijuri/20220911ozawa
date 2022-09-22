@@ -11,12 +11,10 @@ use App\Models\User;
 use App\Models\Todo;
 use App\Models\Tag;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 class TodoController extends Controller
 {
-    public function redirectPath() {
-      return '/login';
-    }
     public function index() {
       $auth = Auth::user();
       $users = User::all();
