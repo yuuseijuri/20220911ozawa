@@ -37,4 +37,5 @@ Route::get('/find', [TaskController::class, 'find']);
 Route::post('/find', [TaskController::class, 'search']);
 Route::post('/home', [TaskController::class, 'search'])->name('home');
 
-Route::get('/login', [AuthenticatedSessionController::class, 'destroy']);
+Route::get('/login', [AuthenticatedSessionController::class, 'store']);
+Route::get('/logout', [AuthenticatedSessionController::class, 'destroy']);
