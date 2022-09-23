@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TodoController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-
+use Illuminate\Support\Facades\Auth;
+use App\Http\Middleware\Authenticate;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,13 +19,14 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 Route::group(['prefix' => '/'], function() {
     Route::group(['middleware' => 'auth'], function() {
         Route::get('', function () { return view('welcome'); });
-        Route::get('dashboard', function () { return view('dashboard'); });
+        Route::get('dashboard', function () { return view('dashboard'); })->name('dashboard');
         Route::get('home', [TodoController::class, 'index']);
         Route::post('add', [TodoController::class, 'create']);
         Route::post('edit', [TodoController::class, 'update'])->name('edit');
         Route::post('delete', [TodoController::class, 'remove'])->name('delete');
         Route::get('find', [TaskController::class, 'find']);
         Route::post('find', [TaskController::class, 'search']);
+        Route::post('delete', [TaskController::class, 'remove'])->name('delete');
         Route::post('home', [TaskController::class, 'search'])->name('home');
         Route::get('logout', [AuthenticatedSessionController::class, 'destroy']);
     });

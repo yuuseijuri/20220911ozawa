@@ -40,25 +40,19 @@ class TaskController extends Controller
         $user_id = Auth::id();
         $task = $request->task;
         $tag_id = $request->tag_id;
+        
         $form = [
             'user_id' => $user_id,
             'task' => $task,
-            'tag_id' => $tag_id,
+            'tag_id' => $tag_id
         ];
+        
         unset($form['_token']);
         Todo::where('id', $request->id)->update($form);
         return redirect('/find');
     }
-    public function remove(TodoRequest $request) {
-        $user_id = Auth::id();
-        $task = $request->task;
-        $tag_id = $request->tag_id;
-        $form = [
-            'user_id' => $user_id,
-            'task' => $task,
-            'tag_id' => $tag_id,
-        ];
-        Todo::find($request->id)->delete($form);
+    public function remove(Request $request) {
+        Todo::find($request->id)->delete();
         return redirect('/find');
     }
 }
