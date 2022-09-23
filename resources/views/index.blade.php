@@ -173,7 +173,7 @@
             @endforeach
           </ul>
           @endif
-          <form action="/login" method="get">
+          <form action="/logout" method="get">
             @csrf
             <input type="submit" value="ログアウト" class="logout_btn">
           </form>
