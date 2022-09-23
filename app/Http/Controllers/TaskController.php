@@ -10,18 +10,18 @@ use App\Http\Requests\TodoRequest;
 use App\Models\Todo;
 use App\Models\User;
 use App\Models\Tag;
-use App\Http\Controllers\TodoController;
+// use App\Http\Controllers\TodoController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Middleware\Authenticate;
 
 class TaskController extends Controller
 {
     public function find() {
         $auth = Auth::user();
-        $users = User::all();
         $todos = Todo::all();
         $tags = Tag::all();
         $param = [
             'auth' => $auth,
-            'user' => $users,
             'todos' => $todos,
             'tags' => $tags
         ];
@@ -40,13 +40,12 @@ class TaskController extends Controller
         $user_id = Auth::id();
         $task = $request->task;
         $tag_id = $request->tag_id;
-        
         $form = [
             'user_id' => $user_id,
             'task' => $task,
             'tag_id' => $tag_id
         ];
-        
+        dd($form);
         unset($form['_token']);
         Todo::where('id', $request->id)->update($form);
         return redirect('/find');

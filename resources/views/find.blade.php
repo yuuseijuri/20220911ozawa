@@ -173,7 +173,7 @@
             @endforeach
           </ul>
           @endif
-          <form action="/" method="get">
+          <form action="/logout" method="get">
             @csrf
             <input type="submit" value="ログアウト" class="logout_btn">
           </form>
@@ -203,7 +203,7 @@
         </tr>
         @foreach($todos as $todo)
         <tr>
-          <td class="text1">{{$auth->updated_at}}</td>
+          <td class="text1">{{$todo->updated_at}}</td>
           <form action="{{route('edit', ['id' => $todo->id])}}" method="post">
             @csrf
             <td class="text2">
@@ -211,7 +211,7 @@
             </td>
             @csrf
             <td class="text3">
-              <select name="select" class="tag_list">
+              <select name="tag_id" class="tag_list">
                 @foreach($tags as $tag)
                   <option value="{{$tag->id}}" @if($tag->id==$todo->tag_id) selected @endif>{{$tag->tag}}</option>
                 @endforeach  
