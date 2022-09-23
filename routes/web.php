@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TodoController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Middleware\TodoMiddleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +39,3 @@ Route::post('/find', [TaskController::class, 'search']);
 Route::post('/home', [TaskController::class, 'search'])->name('home');
 
 Route::get('/logout', [AuthenticatedSessionController::class, 'destroy']);
-
-Route::get('/middleware', [TodoController::class, 'get']);
-Route::post('/middleware', [TodoController::class, 'post']);

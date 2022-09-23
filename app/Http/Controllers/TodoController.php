@@ -12,6 +12,7 @@ use App\Models\Todo;
 use App\Models\Tag;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Middleware\Authenticate;
 
 class TodoController extends Controller
 {
