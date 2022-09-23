@@ -18,8 +18,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 Route::group(['prefix' => '/'], function() {
     Route::group(['middleware' => 'auth'], function() {
         Route::get('', function () { return view('welcome'); });
-        Route::get('dashboard', function () { return view('dashboard'); })->middleware(['auth'])->name('dashboard');
-        require __DIR__.'/auth.php';
+        Route::get('dashboard', function () { return view('dashboard'); });
         Route::get('home', [TodoController::class, 'index']);
         Route::post('add', [TodoController::class, 'create']);
         Route::post('edit', [TodoController::class, 'update'])->name('edit');
@@ -30,7 +29,7 @@ Route::group(['prefix' => '/'], function() {
         Route::get('logout', [AuthenticatedSessionController::class, 'destroy']);
     });
 });
-
+require __DIR__.'/auth.php';
 
 
 
