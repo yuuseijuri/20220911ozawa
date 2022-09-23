@@ -15,27 +15,23 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['prefix' => '/'], function() {
+    Route::group(['middleware' => 'auth'], function() {
+        Route::get('', function () { return view('welcome'); });
+        Route::get('dashboard', function () { return view('dashboard'); })->middleware(['auth'])->name('dashboard');
+        require __DIR__.'/auth.php';
+        Route::get('home', [TodoController::class, 'index']);
+        Route::post('add', [TodoController::class, 'create']);
+        Route::post('edit', [TodoController::class, 'update'])->name('edit');
+        Route::post('delete', [TodoController::class, 'remove'])->name('delete');
+        Route::get('find', [TaskController::class, 'find']);
+        Route::post('find', [TaskController::class, 'search']);
+        Route::post('home', [TaskController::class, 'search'])->name('home');
+        Route::get('logout', [AuthenticatedSessionController::class, 'destroy']);
+    });
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
 
-Route::get('/home', [TodoController::class, 'index']);
 
-Route::post('/add', [TodoController::class, 'create']);
 
-Route::post('/edit', [TodoController::class, 'update'])->name('edit');
-
-Route::post('/delete', [TodoController::class, 'remove'])->name('delete');
-
-Route::get('/find', [TaskController::class, 'find']);
-Route::post('/find', [TaskController::class, 'search']);
-Route::post('/home', [TaskController::class, 'search'])->name('home');
-
-Route::get('/logout', [AuthenticatedSessionController::class, 'destroy']);
