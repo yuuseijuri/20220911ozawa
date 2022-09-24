@@ -201,6 +201,7 @@
           <th class="list4">更新</th>
           <th class="list5">削除</th>
         </tr>
+        @if(@isset($todos))
         @foreach($todos as $todo)
         <tr>
           <td class="text1">{{$todo->updated_at}}</td>
@@ -231,7 +232,8 @@
         </tr>
         @endforeach
       </table>
-      <form action="{{route('home', ['id' => $todo->id])}}" method="get">
+      @endif
+      <form action="{{route('home', ['id' => $tag->id])}}" method="get">
         @csrf
         <input type="submit" value="戻る" class="back_btn">
       </form>
