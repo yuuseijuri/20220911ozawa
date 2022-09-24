@@ -18,19 +18,21 @@ class TaskController extends Controller
 {
     public function find() {
         $auth = Auth::user();
-        $todos = Todo::all();
         $tags = Tag::all();
         $param = [
             'auth' => $auth,
-            'todos' => $todos,
-            'tags' => $tags
+            'tags' => $tags,
         ];
-        return view('find', $param, ['input' => '']);
+        // dd($param);
+        return view('find', $param);
     }
-    public function search(Request $request) {
+    public function search(TodoRequest $request) {
+        $tags = Tag::all();
+        $todos = Todo::all();
         $todos = Todo::where($request->input)->task();
         $todos = Todo::where($request->tag_id)->tag();
         $param = [
+            'tags' => $tags,
             'todos' => $todos,
             'input' => $request->input
         ];
@@ -45,7 +47,6 @@ class TaskController extends Controller
             'task' => $task,
             'tag_id' => $tag_id
         ];
-        dd($form);
         unset($form['_token']);
         Todo::where('id', $request->id)->update($form);
         return redirect('/find');
