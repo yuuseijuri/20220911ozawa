@@ -186,6 +186,7 @@
           @csrf
           <select name="tag_id" class="tag_list">
             @foreach($tags as $tag)
+            <option value=""></option>
             <option value="{{$tag->id}}">{{$tag->tag}}</option>
             @endforeach
           </select>
