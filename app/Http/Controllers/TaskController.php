@@ -23,22 +23,21 @@ class TaskController extends Controller
             'auth' => $auth,
             'tags' => $tags,
         ];
-        // dd($param);
-        return view('find', $param, ['input' => '']);
+        return view('find', $param);
     }
-    public function search(TodoRequest $request) {
+    public function search(Request $request) {
         $auth = Auth::user();
         $tags = Tag::all();
-        $todos = Todo::all();
-        dd($todos);
-        $todos = Todo::where('task', 'LIKE BINARY', "%{$request->input}%")->get();
-        $todos = Todo::where('tag_id', $request->input)->get();
+        // $todos = Todo::all();
+        $todos = Todo::where('task', $request->task);
+        $todos = Todo::where('tag_id', $request->tag_id);
         $param = [
             'auth' => $auth,
             'tags' => $tags,
             'todos' => $todos,
-            'input' => $request->input
+            // 'tasks' => $tasks,
         ];
+        // dd($param);
         return view('find', $param);
     }
     public function update(TodoRequest $request) {
