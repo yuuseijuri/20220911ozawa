@@ -24,14 +24,17 @@ class TaskController extends Controller
             'tags' => $tags,
         ];
         // dd($param);
-        return view('find', $param);
+        return view('find', $param, ['input' => '']);
     }
     public function search(TodoRequest $request) {
+        $auth = Auth::user();
         $tags = Tag::all();
         $todos = Todo::all();
-        $todos = Todo::where($request->input)->task();
-        $todos = Todo::where($request->tag_id)->tag();
+        dd($todos);
+        $todos = Todo::where('task', 'LIKE BINARY', "%{$request->input}%")->get();
+        $todos = Todo::where('tag_id', $request->input)->get();
         $param = [
+            'auth' => $auth,
             'tags' => $tags,
             'todos' => $todos,
             'input' => $request->input
@@ -52,7 +55,7 @@ class TaskController extends Controller
         return redirect('/find');
     }
     public function remove(Request $request) {
-        Todo::find($request->id)->delete();
+        Todo::find($request->id)->taskDelete();
         return redirect('/find');
     }
 }

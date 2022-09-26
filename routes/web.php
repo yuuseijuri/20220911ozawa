@@ -27,8 +27,8 @@ Route::group(['prefix' => '/'], function() {
         Route::post('delete', [TodoController::class, 'remove'])->name('delete');
 
         Route::get('find', [TaskController::class, 'find'])->name('find');
-        Route::post('find', [TaskController::class, 'search']);
-        Route::post('delete', [TaskController::class, 'remove'])->name('delete');
+        Route::post('find', [TaskController::class, 'search'])->name('find');
+        Route::post('taskDelete', [TaskController::class, 'remove'])->name('taskDelete');
         Route::get('home', [TodoController::class, 'index'])->name('home');
 
         Route::get('logout', [AuthenticatedSessionController::class, 'destroy']);

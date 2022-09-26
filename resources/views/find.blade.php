@@ -205,7 +205,7 @@
         @foreach($todos as $todo)
         <tr>
           <td class="text1">{{$todo->updated_at}}</td>
-          <form action="{{route('edit', ['id' => $todo->id])}}" method="post">
+          <form action="{{route('find', ['id' => $todo->id])}}" method="post">
             @csrf
             <td class="text2">
               <input type="text" name="task" value="{{$todo->task}}" class="task_text2">
@@ -223,7 +223,7 @@
               <input type="submit" value="更新" class="update_btn">
             </td>
           </form>  
-          <form action="{{route('delete', ['id' => $todo->id])}}" method="post">
+          <form action="{{route('taskDelete', ['id' => $todo->id])}}" method="post">
             @csrf
             <td class="text5">
               <input type="submit" value="削除" class="remove_btn">
