@@ -29,15 +29,15 @@ class TaskController extends Controller
         $auth = Auth::user();
         $tags = Tag::all();
         // $todos = Todo::all();
-        $todos = Todo::where('task', $request->task);
-        $todos = Todo::where('tag_id', $request->tag_id);
+        $todos = Todo::where('task', $request->task)->get();
+        // $todos = Todo::where('tag_id',$request->tag_id)->get();
         $param = [
             'auth' => $auth,
             'tags' => $tags,
             'todos' => $todos,
             // 'tasks' => $tasks,
         ];
-        // dd($param);
+        dd($param);
         return view('find', $param);
     }
     public function update(TodoRequest $request) {
