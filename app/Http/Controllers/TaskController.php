@@ -65,7 +65,7 @@ class TaskController extends Controller
         return redirect('/find');
     }
     public function remove(Request $request) {
-        Todo::find($request->id)->delete();
-        return redirect('/find');
+        Todo::where('id', $request->id)->delete();
+        return back();
     }
 }
