@@ -40,7 +40,7 @@ class TaskController extends Controller
             $query->where('tag_id',$request->tag_id);
         }
         $todos = $query->get();
-        // dd($todos);
+
         $param = [
             'auth' => $auth,
             'tags' => $tags,
@@ -66,6 +66,6 @@ class TaskController extends Controller
     }
     public function remove(Request $request) {
         Todo::where('id', $request->id)->delete();
-        return back();
+        return redirect('/find');
     }
 }
